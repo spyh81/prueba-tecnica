@@ -1,0 +1,32 @@
+.contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+hr {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.botones-nav {
+  display: flex;
+  gap: 90px;
+  list-style: none;
+}
+
+.enlaces {
+  color: rgb(43, 43, 43);
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}

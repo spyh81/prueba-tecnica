@@ -1,1 +1,21 @@
-<p>header works!</p>
+<header class="contenedor">
+  <a class="logo enlaces" [routerLink]="['/']">LOGO</a>
+  <ul class="botones-nav">
+    <li>
+      <a class="enlaces" [routerLink]="['/proyectos']" routerLinkActive="active"
+        >Proyectos</a
+      >
+    </li>
+    <li>
+      <a class="enlaces" [routerLink]="['/tareas']" routerLinkActive="active"
+        >Tareas</a
+      >
+    </li>
+    <li>
+      <a class="enlaces" [routerLink]="['/empleados']" routerLinkActive="active"
+        >Empleados</a
+      >
+    </li>
+  </ul>
+  <a class="boton-login enlaces" [routerLink]="['/login']">Cerrar sesión</a>
+</header>
