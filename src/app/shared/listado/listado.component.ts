@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,20 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listado.component.html',
   styleUrl: './listado.component.css'
 })
+
 export class ListadoComponent {
   columnas = input<string[]>([]);
-  datos = input<unknown[]>([]);
+  datos = input<object[]>([]);
+  etiquetas = input<{ [key: string]: string }>({});
+
+  editar = output<object>();
+  eliminar = output<object>();
+
+  onEditar(elemento: object) {
+    this.editar.emit(elemento);
+  }
+
+  onEliminar(elemento: object) {
+    this.eliminar.emit(elemento);
+  }
 }

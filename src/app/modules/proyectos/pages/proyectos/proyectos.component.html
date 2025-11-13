@@ -1,5 +1,12 @@
 <div class="contenedor">
   <h1>LISTA DE PROYECTOS</h1>
   <button>Nuevo Proyecto</button>
-  <app-listado></app-listado>
+  <app-listado
+    [columnas]="configuracionColumnas.columnas"
+    [etiquetas]="configuracionColumnas.etiquetas"
+    [datos]="(datos$ | async) || []"
+    (editar)="onEditarProyecto($any($event))"
+    (eliminar)="onEliminarProyecto($any($event))"
+  >
+  </app-listado>
 </div>

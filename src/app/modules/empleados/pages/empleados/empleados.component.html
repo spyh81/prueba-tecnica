@@ -1,5 +1,10 @@
 <div class="contenedor">
   <h1>LISTA DE EMPLEADOS</h1>
   <button>Nuevo Empleado</button>
-  <app-listado></app-listado>
+  <app-listado
+    [columnas]="configuracionColumnas.columnas"
+    [etiquetas]="configuracionColumnas.etiquetas"
+    [datos]="(datos$ | async) || []"
+  >
+  </app-listado>
 </div>
