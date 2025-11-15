@@ -18,11 +18,11 @@ export class ListadoComponent {
   editar = output<object>();
   eliminar = output<object>();
 
-  onEditar(elemento: object) {
+  alEditar(elemento: object) {
     this.editar.emit(elemento);
   }
 
-  onEliminar(elemento: object) {
+  alEliminar(elemento: object) {
     this.eliminar.emit(elemento);
   }
 }

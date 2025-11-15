@@ -1,0 +1,11 @@
+<div class="modal-fondo" (click)="alClickFondo($event)">
+  <div class="modal-contenido">
+    <div class="modal-cabecera">
+      <h2>{{ titulo() }}</h2>
+      <button class="boton-cerrar" (click)="alCerrar()">&times;</button>
+    </div>
+    <div class="modal-cuerpo">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

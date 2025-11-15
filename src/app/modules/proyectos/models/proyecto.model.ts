@@ -2,8 +2,8 @@ export interface Proyecto {
     id: string,
     nombre: string;
     descripcion: string;
-    fechaInicio: Date;
-    fechaFinalizacion: Date;
+    fechaInicio: string;
+    fechaFinalizacion: string;
     empleadosAsignados: string[];
     tareas: string[];
 }

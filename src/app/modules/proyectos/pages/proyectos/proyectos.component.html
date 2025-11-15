@@ -1,12 +1,27 @@
 <div class="contenedor">
   <h1>LISTA DE PROYECTOS</h1>
-  <button>Nuevo Proyecto</button>
+  <button (click)="nuevoProyecto()">Nuevo Proyecto</button>
   <app-listado
     [columnas]="configuracionColumnas.columnas"
     [etiquetas]="configuracionColumnas.etiquetas"
     [datos]="(datos$ | async) || []"
-    (editar)="onEditarProyecto($any($event))"
-    (eliminar)="onEliminarProyecto($any($event))"
+    (editar)="alEditarProyecto($any($event))"
+    (eliminar)="alEliminarProyecto($any($event))"
   >
   </app-listado>
+
+  <!-- Modal para nuevo/editar proyecto -->
+  @if (mostrarModalNuevo) {
+  <app-modal
+    [titulo]="proyectoAEditar ? 'Editar Proyecto' : 'Nuevo Proyecto'"
+    (cerrar)="cerrarModal()"
+  >
+    <app-proyecto-form
+      [proyectoInicial]="proyectoAEditar"
+      (guardar)="alGuardarProyecto($event)"
+      (cancelar)="cerrarModal()"
+    >
+    </app-proyecto-form>
+  </app-modal>
+  }
 </div>

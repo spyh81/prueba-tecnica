@@ -1,0 +1,58 @@
+<form class="form" [formGroup]="proyectoForm" (ngSubmit)="alCrear()">
+  <div class="campo">
+    <input
+      type="text"
+      placeholder="Nombre del Proyecto"
+      formControlName="nombre"
+      class="input"
+    />
+    <div
+      *ngIf="
+        proyectoForm.get('nombre')?.invalid &&
+        proyectoForm.get('nombre')?.touched
+      "
+      class="error"
+    >
+      El nombre es requerido
+    </div>
+  </div>
+
+  <div class="campo">
+    <textarea
+      placeholder="Descripción del Proyecto"
+      formControlName="descripcion"
+      class="input textarea"
+      rows="3"
+    >
+    </textarea>
+  </div>
+
+  <div class="campo">
+    <label>Fecha de Inicio</label>
+    <input type="date" formControlName="fechaInicio" class="input" />
+    <div
+      *ngIf="
+        proyectoForm.get('fechaInicio')?.invalid &&
+        proyectoForm.get('fechaInicio')?.touched
+      "
+      class="error"
+    >
+      La fecha de inicio es requerida
+    </div>
+  </div>
+
+  <div class="campo">
+    <label>Fecha de Finalización</label>
+    <input type="date" formControlName="fechaFinalizacion" class="input" />
+  </div>
+
+  <div class="campo">
+    <label>Empleados Asignados</label>
+    <input type="text" formControlName="empleadosAsignados" class="input" />
+  </div>
+
+  <div class="form-buttons">
+    <button type="submit" [disabled]="proyectoForm.invalid">Guardar</button>
+    <button type="button" (click)="alCancelar()">Cancelar</button>
+  </div>
+</form>
