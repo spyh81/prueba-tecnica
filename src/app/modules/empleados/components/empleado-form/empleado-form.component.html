@@ -1,0 +1,48 @@
+<form [formGroup]="formulario" (ngSubmit)="alCrear()">
+  <div class="form-group">
+    <label for="nombreCompleto">Nombre Completo *</label>
+    <input
+      type="text"
+      id="nombreCompleto"
+      formControlName="nombreCompleto"
+      placeholder="Ej: Juan Pérez García"
+    />
+    @if ( formulario.get("nombreCompleto")?.invalid &&
+    formulario.get("nombreCompleto")?.touched ) {
+    <span class="error">El nombre completo es requerido</span>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="correoElectronico">Correo Electrónico *</label>
+    <input
+      type="email"
+      id="correoElectronico"
+      formControlName="correoElectronico"
+      placeholder="Ej: juan.perez@empresa.com"
+    />
+    @if ( formulario.get("correoElectronico")?.invalid &&
+    formulario.get("correoElectronico")?.touched ) {
+    <span class="error">Ingrese un correo electrónico válido</span>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="puestoRol">Puesto/Rol *</label>
+    <input
+      type="text"
+      id="puestoRol"
+      formControlName="puestoRol"
+      placeholder="Ej: Desarrollador Senior"
+    />
+    @if ( formulario.get("puestoRol")?.invalid &&
+    formulario.get("puestoRol")?.touched ) {
+    <span class="error">El puesto/rol es requerido</span>
+    }
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" [disabled]="formulario.invalid">Guardar</button>
+    <button type="button" (click)="alCancelar()">Cancelar</button>
+  </div>
+</form>

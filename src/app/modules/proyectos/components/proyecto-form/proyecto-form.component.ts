@@ -23,9 +23,7 @@ export class ProyectoFormComponent {
       nombre: ['', [Validators.required]],
       descripcion: [''],
       fechaInicio: ['', Validators.required],
-      fechaFinalizacion: [''],
-      empleadosAsignados: [[]],
-      tareas: [[]]
+      fechaFinalizacion: ['']
     });
 
     // Effect para detectar cuando proyectoInicial cambia y poblar el formulario
@@ -38,9 +36,7 @@ export class ProyectoFormComponent {
           nombre: proyecto.nombre,
           descripcion: proyecto.descripcion,
           fechaInicio: proyecto.fechaInicio,
-          fechaFinalizacion: proyecto.fechaFinalizacion,
-          empleadosAsignados: proyecto.empleadosAsignados || [],
-          tareas: proyecto.tareas || []
+          fechaFinalizacion: proyecto.fechaFinalizacion
         });
       } else {
         // Si no hay proyecto inicial, resetear el formulario

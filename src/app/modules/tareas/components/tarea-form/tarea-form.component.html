@@ -1,0 +1,57 @@
+<form class="form" [formGroup]="tareaForm" (ngSubmit)="alCrear()">
+  <div class="campo">
+    <input
+      type="text"
+      placeholder="Titulo de la Tarea"
+      formControlName="titulo"
+      class="input"
+    />
+    <div
+      *ngIf="
+        tareaForm.get('titulo')?.invalid && tareaForm.get('titulo')?.touched
+      "
+      class="error"
+    >
+      El titulo es requerido
+    </div>
+  </div>
+
+  <div class="campo">
+    <textarea
+      placeholder="Descripción de la Tarea"
+      formControlName="descripcion"
+      class="input textarea"
+      rows="3"
+    >
+    </textarea>
+  </div>
+
+  <div class="campo">
+    <label>Estado</label>
+    <select formControlName="estado" class="input">
+      <option value="">Selecciona un estado</option>
+      <option *ngFor="let estado of estadosTarea" [value]="estado">
+        {{ estado }}
+      </option>
+    </select>
+  </div>
+
+  <div class="campo">
+    <label>Fecha de Creacion</label>
+    <input type="date" formControlName="fechaCreacion" class="input" />
+    <div
+      *ngIf="
+        tareaForm.get('fechaCreacion')?.invalid &&
+        tareaForm.get('fechaCreacion')?.touched
+      "
+      class="error"
+    >
+      La fecha de creación es requerida
+    </div>
+  </div>
+
+  <div class="form-buttons">
+    <button type="submit" [disabled]="tareaForm.invalid">Guardar</button>
+    <button type="button" (click)="alCancelar()">Cancelar</button>
+  </div>
+</form>

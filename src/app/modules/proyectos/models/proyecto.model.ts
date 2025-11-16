@@ -4,6 +4,4 @@ export interface Proyecto {
     descripcion: string;
     fechaInicio: string;
     fechaFinalizacion: string;
-    empleadosAsignados: string[];
-    tareas: string[];
 }

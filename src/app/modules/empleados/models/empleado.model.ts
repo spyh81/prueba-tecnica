@@ -3,6 +3,4 @@ export interface Empleado {
     nombreCompleto: string;
     correoElectronico: string;
     puestoRol: string;
-    proyectosAsignados: string[];
-    tareasAsignadas: string[];
 }

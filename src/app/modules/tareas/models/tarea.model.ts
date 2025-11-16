@@ -5,7 +5,7 @@ export interface Tarea {
     titulo: string;
     descripcion: string;
     estado: EstadoTarea;
-    fechaCreacion: Date;
-    fechaLimite?: Date;
+    fechaCreacion: string;
+    fechaLimite?: string;
     empleadoAsignadoId?: string;
 }

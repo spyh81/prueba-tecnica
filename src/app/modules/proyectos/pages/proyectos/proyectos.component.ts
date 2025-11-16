@@ -22,14 +22,13 @@ export class ProyectosComponent {
   constructor(private proyectoService: ProyectoService) { }
 
   configuracionColumnas = {
-    columnas: ['id', 'nombre', 'descripcion', 'fechaInicio', 'fechaFinalizacion', 'empleadosAsignados', 'acciones'],
+    columnas: ['id', 'nombre', 'descripcion', 'fechaInicio', 'fechaFinalizacion', 'acciones'],
     etiquetas: {
       'id': 'Id',
       'nombre': 'Nombre',
       'descripcion': 'Descripción',
       'fechaInicio': 'Fecha Inicio',
       'fechaFinalizacion': 'Fecha Finalización',
-      'empleadosAsignados': 'Empleados Asignados',
       'acciones': 'Acciones'
     }
   }
@@ -48,16 +47,18 @@ export class ProyectosComponent {
   alGuardarProyecto(proyecto: Proyecto) {
     console.log('Guardar proyecto:', proyecto);
     if (this.proyectoAEditar) {
-      this.proyectoService.editarProyecto(proyecto).subscribe({
+      // Editar proyecto existente
+      const proyectoEditado = { ...proyecto, id: this.proyectoAEditar.id };
+      this.proyectoService.editarProyecto(proyectoEditado).subscribe({
         next: () => {
           this.datos$ = this.proyectoService.obtenerProyectos();
           this.cerrarModal();
         }
       });
     } else {
+      // Crear proyecto nuevo
       this.proyectoService.crearProyecto(proyecto).subscribe({
         next: () => {
-          // Refrescar la tabla
           this.datos$ = this.proyectoService.obtenerProyectos();
           this.cerrarModal();
         }
@@ -75,14 +76,15 @@ export class ProyectosComponent {
 
   alEliminarProyecto(proyecto: Proyecto) {
     console.log('Eliminar proyecto', proyecto);
+    if (confirm(`¿Estás seguro de eliminar el ${proyecto.nombre}?`)) {
+      this.proyectoService.eliminarProyecto(proyecto).subscribe({
+        next: (proyectoEliminado) => {
+          console.log('Proyecto eliminado:', proyectoEliminado);
 
-    this.proyectoService.eliminarProyecto(proyecto).subscribe({
-      next: (proyectoEliminado) => {
-        console.log('✅ Proyecto eliminado:', proyectoEliminado);
-
-        // Refrescar la tabla
-        this.datos$ = this.proyectoService.obtenerProyectos();
-      }
-    });
+          // Refrescar la tabla
+          this.datos$ = this.proyectoService.obtenerProyectos();
+        }
+      });
+    }
   }
 }

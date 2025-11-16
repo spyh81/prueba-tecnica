@@ -1,10 +1,25 @@
 <div class="contenedor">
   <h1>LISTA DE TAREAS</h1>
-  <button>Nueva Tarea</button>
+  <button (click)="nuevaTarea()">Nueva Tarea</button>
   <app-listado
     [columnas]="configuracionColumnas.columnas"
     [etiquetas]="configuracionColumnas.etiquetas"
     [datos]="(datos$ | async) || []"
+    (editar)="alEditarTarea($any($event))"
+    (eliminar)="alEliminarTarea($any($event))"
   >
   </app-listado>
+  @if (mostrarModalNuevo) {
+  <app-modal
+    [titulo]="tareaAEditar ? 'Editar Tarea' : 'Nueva Tarea'"
+    (cerrar)="cerrarModal()"
+  >
+    <app-tarea-form
+      [tareaInicial]="tareaAEditar"
+      (guardar)="alGuardarTarea($event)"
+      (cancelar)="cerrarModal()"
+    >
+    </app-tarea-form>
+  </app-modal>
+  }
 </div>

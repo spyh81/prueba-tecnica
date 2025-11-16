@@ -1,10 +1,26 @@
 <div class="contenedor">
   <h1>LISTA DE EMPLEADOS</h1>
-  <button>Nuevo Empleado</button>
+  <button (click)="abrirModalNuevo()">Nuevo Empleado</button>
   <app-listado
     [columnas]="configuracionColumnas.columnas"
     [etiquetas]="configuracionColumnas.etiquetas"
     [datos]="(datos$ | async) || []"
+    (editar)="alEditarEmpleado($any($event))"
+    (eliminar)="alEliminarEmpleado($any($event))"
   >
   </app-listado>
 </div>
+
+@if (mostrarModalNuevo) {
+<app-modal
+  [titulo]="empleadoAEditar ? 'Editar Empleado' : 'Nuevo Empleado'"
+  (cerrar)="cerrarModal()"
+>
+  <app-empleado-form
+    [empleadoInicial]="empleadoAEditar"
+    (guardar)="alGuardarEmpleado($event)"
+    (cancelar)="cerrarModal()"
+  >
+  </app-empleado-form>
+</app-modal>
+}
