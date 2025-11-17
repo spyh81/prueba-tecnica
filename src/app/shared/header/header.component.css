@@ -10,23 +10,36 @@
   border-radius: 10px;
 }
 
-hr {
-  width: 75%;
-  margin: 0 auto;
-}
-
 .botones-nav {
   display: flex;
   gap: 90px;
   list-style: none;
 }
 
+.cerrar-sesion {
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
 .enlaces {
-  color: rgb(43, 43, 43);
+  color: rgb(54, 54, 54);
   text-decoration: none;
 }
 
+.enlaces:hover {
+  text-shadow: 0 0 1px currentColor;
+  color: #37bfb4;
+}
+
 .logo {
+  color: #323232;
   font-size: 25px;
   font-weight: bold;
+  text-decoration: none;
+}
+
+.nombre-usuario {
+  color: #37bfb4;
+  margin-right: 10px;
 }

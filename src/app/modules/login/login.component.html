@@ -1,0 +1,30 @@
+<div class="contenedor">
+  <h2 class="titulo">Iniciar sesión</h2>
+  <form class="form" [formGroup]="login" (ngSubmit)="alEnviar()">
+    <input
+      type="text"
+      placeholder="Usuario"
+      id="usuario"
+      class="input"
+      formControlName="usuario"
+    />
+    @if (login.get('usuario')?.touched &&
+    login.get('usuario')?.errors?.['required']) {
+    <p class="error">El usuario es requerido</p>
+    }
+    <input
+      type="password"
+      placeholder="Contraseña"
+      id="contrasena"
+      class="input"
+      formControlName="contrasena"
+    />
+    @if (login.get('contrasena')?.touched &&
+    login.get('contrasena')?.errors?.['required']) {
+    <p class="error">La cotraseña es requerida</p>
+    }
+    <button type="submit" class="input" id="boton" [disabled]="!login.valid">
+      Acceder
+    </button>
+  </form>
+</div>

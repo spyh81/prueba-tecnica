@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./shared/header/header.component";
+import { LoginService } from './core/services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,10 @@ import { HeaderComponent } from "./shared/header/header.component";
 })
 export class AppComponent {
   title = 'prueba-tecnica';
+
+  constructor(private loginService: LoginService) {}
+
+  get estaLogueado(): boolean {
+    return this.loginService.estaAutenticado();
+  }
 }

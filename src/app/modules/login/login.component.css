@@ -1,0 +1,60 @@
+.contenedor {
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.titulo {
+  color: rgb(82, 82, 82);
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.form {
+  padding: 20px;
+  margin: 0 auto;
+  width: 20%;
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  font-size: 16px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.input::placeholder {
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+  color: #3f3f3f;
+}
+
+.input:focus {
+  outline: none;
+}
+
+#boton {
+  cursor: pointer;
+  color: white;
+  background-color: #41c4b9;
+  margin-top: 20px;
+}
+
+#boton:hover {
+  background-color: #37a89e;
+}

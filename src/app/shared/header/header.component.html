@@ -1,5 +1,5 @@
 <header class="contenedor">
-  <a class="logo enlaces" [routerLink]="['/']">LOGO</a>
+  <a class="logo" [routerLink]="['/proyectos']">LOGO</a>
   <ul class="botones-nav">
     <li>
       <a class="enlaces" [routerLink]="['/proyectos']" routerLinkActive="active"
@@ -17,5 +17,10 @@
       >
     </li>
   </ul>
-  <a class="boton-login enlaces" [routerLink]="['/login']">Cerrar sesión</a>
+  <div>
+    <span class="nombre-usuario">{{ nombreUsuario }}</span>
+    <button class="cerrar-sesion" (click)="cerrarSesion()">
+      Cerrar sesión
+    </button>
+  </div>
 </header>
