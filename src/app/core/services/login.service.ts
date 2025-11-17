@@ -11,23 +11,35 @@ export class LoginService {
 
   iniciarSesion(usuario: string, contrasena: string): boolean {
     if (usuario === 'admin' && contrasena === 'admin') {
-      localStorage.setItem(this.CLAVE_ALMACENAMIENTO, 'true');
-      localStorage.setItem(this.CLAVE_USUARIO, usuario);
+      // Aquí comprobamos que localStorage exista antes de ser usado
+      // Podremos hacer uso del localStorage en cualquier entorno (Node.js, SSR, etc)
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(this.CLAVE_ALMACENAMIENTO, 'true');
+        localStorage.setItem(this.CLAVE_USUARIO, usuario);
+      }
       return true;
     }
     return false;
   }
 
   cerrarSesion(): void {
-    localStorage.removeItem(this.CLAVE_ALMACENAMIENTO);
-    localStorage.removeItem(this.CLAVE_USUARIO);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem(this.CLAVE_ALMACENAMIENTO);
+      localStorage.removeItem(this.CLAVE_USUARIO);
+    }
   }
 
   estaAutenticado(): boolean {
-    return localStorage.getItem(this.CLAVE_ALMACENAMIENTO) === 'true';
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(this.CLAVE_ALMACENAMIENTO) === 'true';
+    }
+    return false;
   }
 
   obtenerUsuarioActual(): string | null {
-    return localStorage.getItem(this.CLAVE_USUARIO);
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(this.CLAVE_USUARIO);
+    }
+    return null;
   }
 }
